@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Register from "./components/Register";
+import ipConfig from "./ipConfig.json";
+import { Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import Products from "./components/Products";
+import Checkout from "./components/Checkout";
+import Thanks from "./components/Thanks";
+
+export const config = {
+  endpoint: `http://localhost:8082/api/v1`,
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/" exact>
+          <Products />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
+        <Route path="/thanks">
+          <Thanks />
+        </Route>
+      </Switch>
     </div>
   );
 }
